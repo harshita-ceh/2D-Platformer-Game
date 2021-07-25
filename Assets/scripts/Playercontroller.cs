@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Playercontroller : MonoBehaviour
 {
+    public ScoreController scoreController;
     public Animator animator;
     public float speed;
     public float Jump;
@@ -14,6 +16,11 @@ public class Playercontroller : MonoBehaviour
         Debug.Log("awake");
         rb2D = gameObject.GetComponent<Rigidbody2D>();
     }
+    public void PickUpKey()
+    {
+        Debug.Log("key picked up");
+        scoreController.IncreaseScore(10);
+    }
     private void Update()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
@@ -23,7 +30,7 @@ public class Playercontroller : MonoBehaviour
         PlayMovementAnimation(horizontal,vertical,crouch);
         
     }
-    private void MoveCharacter(float horizontal,float vertical,float crouch)
+    private void MoveCharacter(float horizontal, float vertical, float crouch)
     {
         //horizontal
         if (horizontal != 0)
