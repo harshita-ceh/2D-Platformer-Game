@@ -5,11 +5,14 @@ using UnityEngine;
 
 public class PlayerDeath : MonoBehaviour
 {
-    private Transform player;
-    private Transform respawn;
+    [SerializeField]  Transform player;
+    [SerializeField] Transform respawn;
 
-    void Ontrigger2d(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        player.transform.position = respawn.transform.position;
+        if (collision.transform.CompareTag("Player"))
+        {
+            collision.transform.position = respawn.position;
+        }
     }
 }
