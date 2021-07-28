@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Playercontroller : MonoBehaviour
 {
@@ -16,6 +17,19 @@ public class Playercontroller : MonoBehaviour
         Debug.Log("awake");
         rb2D = gameObject.GetComponent<Rigidbody2D>();
     }
+    public void KillPlayer()
+    {
+        Debug.Log("player killed  by enemy");
+        //Destroy(gameObject);
+        ReloadLevel();
+    }
+
+    private void ReloadLevel()
+    {
+        Debug.Log("reload");
+        SceneManager.LoadScene(0);
+    }
+
     public void PickUpKey()
     {
         Debug.Log("key picked up");
