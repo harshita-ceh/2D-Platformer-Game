@@ -7,10 +7,11 @@ using UnityEngine.SceneManagement;
 public class Playercontroller : MonoBehaviour
 {
     public ScoreController scoreController;
+    public GameOverController gameOverController;
     public Animator animator;
     public float speed;
     public float Jump;
-   public float crouch;
+    public float crouch;
     private Rigidbody2D rb2D;
     private void Awake()
     {
@@ -21,13 +22,8 @@ public class Playercontroller : MonoBehaviour
     {
         Debug.Log("player killed  by enemy");
         //Destroy(gameObject);
-        ReloadLevel();
-    }
-
-    private void ReloadLevel()
-    {
-        Debug.Log("reload");
-        SceneManager.LoadScene(0);
+        gameOverController.PlayerDied();
+        this.enabled = false;
     }
 
     public void PickUpKey()
