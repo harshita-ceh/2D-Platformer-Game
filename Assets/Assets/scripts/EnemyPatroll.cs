@@ -10,7 +10,7 @@ public class EnemyPatroll : MonoBehaviour
     public Transform groundDetection;
      void Update()
     {
-        transform.Translate(Vector2.right * speed * Time.deltaTime);
+        transform.Translate(speed * Time.deltaTime * Vector2.right);
         RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position,Vector2.down,distance);
         if (groundInfo.collider == false)
         {
